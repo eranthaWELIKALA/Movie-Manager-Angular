@@ -1,0 +1,45 @@
+<div class="container">
+    <div *ngIf="languages != undefined">
+        <div class="row">
+            <h1>Languages</h1>
+        <a class="btn btn-primary" (click)="addNewLanguage()">Add New</a>  
+        </div>
+        <div class="row">
+            <div *ngFor="let language of languages" class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                <input class="card-title form-control no-highlight" name="language" [(ngModel)]="language.language" 
+                [ngStyle]="
+                {'background-color': language.editable != undefined ? (language.editable ? '': '#d3d3d3'): '#d3d3d3',
+                'border': language.editable != undefined ? (language.editable ? '1px solid black': '1px solid #d3d3d3'): '1px solid #d3d3d3'}"  [readonly]="language.editable != undefined ? !language.editable: true">
+                <a class="btn btn-primary float-right" (click)="editSaveLanguage(language, $event)">{{language.id!=null?"Edit": "Add"}}</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="locations != undefined">
+        <div class="row">
+            <h1>Locations</h1>
+        <a class="btn btn-primary" (click)="addNewLocation()">Add New</a>  
+        </div>
+        <div class="row">
+            <div *ngFor="let location of locations" class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                <input class="card-title form-control no-highlight" name="locationName" [(ngModel)]="location.name" 
+                [ngStyle]="
+                {'background-color': location.editable != undefined ? (location.editable ? '': '#d3d3d3'): '#d3d3d3',
+                'border': location.editable != undefined ? (!location.editable ? '1px solid black': '1px solid #d3d3d3'): '1px solid #d3d3d3'}"  [readonly]="location.editable != undefined ? !location.editable: true">
+                <textarea class="card-title form-control no-highlight" name="locationDescription" [(ngModel)]="location.description" 
+                [ngStyle]="
+                {'background-color': location.editable != undefined ? (location.editable ? '': '#d3d3d3'): '#d3d3d3',
+                'border': location.editable != undefined ? (!location.editable ? '1px solid black': '1px solid #d3d3d3'): '1px solid #d3d3d3'}"  [readonly]="location.editable != undefined ? !location.editable: true"></textarea>
+                <a class="btn btn-primary float-right" (click)="editSaveLocation(location, $event)">{{location.id!=null?"Edit": "Add"}}</a>          
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.login, .register {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    right: 20%;
+}
+
+tr {
+    margin-bottom: 2rem;
+}
+
+.navigation {
+    color: #1976d2
+}
+
+p {
+    color: red;
+    font-size: smaller
+}

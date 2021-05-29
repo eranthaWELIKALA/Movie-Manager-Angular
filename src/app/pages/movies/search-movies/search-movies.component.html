@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <form (ngSubmit)="search()">
+                <div class="row">
+                    <div class="col-md-3">Search By</div>
+                    <div class="col-md-9">
+                        <select class="form-control" name="searchby" [(ngModel)]="searchItem.searchby">
+                            <option value="title">Title</option>
+                            <option value="description">Description</option>
+                            <option value="year">Year</option>
+                            <option value="location">Location</option>
+                            <option value="language">Language</option>
+                            <option value="cast">Cast</option>
+                            <option value="watched">Watched</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" *ngIf="searchItem.searchby=='title' || searchItem.searchby=='advanced'">
+                    <div class="col-md-3">Title</div>
+                    <div class="col-md-9"><input class="form-control" type="text" name="title" [(ngModel)]="searchItem.title"></div>
+                </div>
+                <div class="row" *ngIf="searchItem.searchby=='description' || searchItem.searchby=='advanced'">
+                    <div class="col-md-3">Description</div>
+                    <div class="col-md-9"><input class="form-control" type="text" name="seardescriptionchby" [(ngModel)]="searchItem.description"></div>
+                </div>
+                <div class="row" *ngIf="searchItem.searchby=='year' || searchItem.searchby=='advanced'">
+                    <div class="col-md-3">Year</div>
+                    <div class="col-md-9"><input class="form-control" type="number" name="year" [(ngModel)]="searchItem.year"></div>
+                </div>
+                <div class="row" *ngIf="searchItem.searchby=='cast' || searchItem.searchby=='advanced'">
+                    <div class="col-md-3">Cast</div>
+                    <div class="col-md-9"><input class="form-control" type="text" name="cast" [(ngModel)]="searchItem.cast"></div>
+                </div>
+                <div class="row" *ngIf="searchItem.searchby=='language' || searchItem.searchby=='advanced'">
+                    <div class="col-md-3">Language</div>
+                    <div class="col-md-9">
+                        <select class="form-control" name="languages" [(ngModel)]="searchItem.language">
+                            <option *ngFor="let language of languages" [value]="language.id">{{language.language}}</option>
+                        </select>
+                        <!-- <input class="form-control" type="text" name="language" [(ngModel)]="searchItem.language"> -->
+                    </div>
+                </div>
+                <div class="row" *ngIf="searchItem.searchby=='location' || searchItem.searchby=='advanced'">
+                    <div class="col-md-3">Location</div>
+                    <div class="col-md-9"><input class="form-control" type="text" name="location" [(ngModel)]="searchItem.location"></div>
+                </div>
+                <div class="row" *ngIf="searchItem.searchby=='watched' || searchItem.searchby=='advanced'">
+                    <div class="col-md-3">Watched</div>
+                    <div class="col-md-9">
+                        <select class="form-control" name="watched" [(ngModel)]="searchItem.watched">
+                            <option *ngIf="searchItem.searchby=='advanced'" [ngValue]="null">Both</option>
+                            <option [ngValue]="true">Yes</option>
+                            <option [ngValue]="false">No</option>
+                        </select>
+                        <!-- <input class="form-control" type="text" name="language" [(ngModel)]="searchItem.language"> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="form-control btn btn-primary" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-view-movies searchTab="true" [searchResults]="searchResults"></app-view-movies>

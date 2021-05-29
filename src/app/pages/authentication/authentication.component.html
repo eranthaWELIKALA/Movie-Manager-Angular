@@ -1,0 +1,72 @@
+<div class="container">
+    <div *ngIf="authentication=='login'" class="login row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Login</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <table>
+                    <tbody>
+                        <tr class="row">
+                            <td><label>Email</label></td>
+                            <td><input class="form-control" type="text" formControlName="email"/></td>                        
+                            <div *ngIf="submitted && loginForm.controls.email.errors">
+                                <p *ngIf="loginForm.controls.email.errors?.required">Email can not be empty</p>
+                                <p *ngIf="loginForm.controls.email.errors?.email">Invalid email</p>
+                            </div>
+                        </tr>
+                        <tr class="row">
+                            <td><label>Password</label></td>
+                            <td><input class="form-control" type="password" formControlName="password"/></td>                       
+                            <div *ngIf="submitted && loginForm.controls.password.errors">
+                                <p *ngIf="loginForm.controls.password.errors?.required">Password can not be empty</p>
+                            </div>
+                        </tr>
+                        <tr class="row">
+                            <button class="form-control" type="submit">Login</button>
+                        </tr>
+                        <tr class="row navigation pointer">
+                            <a (click)="triggerView()">Do not have an account? Register from here</a>
+                        </tr>
+                    </tbody>
+                </table> 
+            </form>
+        </div>
+    </div>
+    
+    <div *ngIf="authentication=='register'" class="register row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Register</h2>
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <table>
+                    <tbody>
+                        <tr class="row">
+                            <td><label>Firstname</label></td>
+                            <td><input class="form-control" type="text" formControlName="firstname"/></td>
+                        </tr>
+                        <tr class="row">
+                            <td><label>Lastname</label></td>
+                            <td><input class="form-control" type="text" formControlName="lastname"/></td>
+                        </tr>
+                        <tr class="row">
+                            <td><label>Email</label></td>
+                            <td><input class="form-control" type="text" formControlName="email"/></td>
+                        </tr>
+                        <tr class="row">
+                            <td><label>Password</label></td>
+                            <td><input class="form-control" type="text" formControlName="password"/></td>
+                        </tr>
+                        <tr class="row">
+                            <td><label>Confirm Password</label></td>
+                            <td><input class="form-control" type="text" formControlName="confirmPassword"/></td>
+                        </tr>
+                        <tr class="row">
+                            <button class="form-control" type="submit">Register</button>
+                        </tr>
+                        <tr class="row navigation pointer">
+                            <a (click)="triggerView()">Go back to Login</a>
+                        </tr>
+                    </tbody>
+                </table> 
+            </form>
+        </div>
+    </div>    
+</div>

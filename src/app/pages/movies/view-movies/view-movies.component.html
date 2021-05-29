@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let movie of movies" class="col-md-4">
+      <div class="card">
+        <div class="imageArea">          
+          <img id="watchedIcon" *ngIf="movie.watched" src="../../../../assets/watched.png" class="card-img-top" alt="...">
+          <img id="imageIcon" [attr.src]="movie.imagePath == 'url/image'? getSantizeUrl('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=='):movie.imagePath" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{movie.title}} - {{movie.language}}</h5>
+          <p class="card-text">{{movie.description}}</p>
+          <a class="btn btn-primary" (click)="viewMore(movieModal, movie)">View More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #movieModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{selectedMovie?.title}} - {{selectedMovie?.year}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-3">Language</div>
+        <div class="col-9">{{selectedMovie?.language}}</div>
+      </div>
+      <div class="row">
+        <div class="col-3">Description</div>
+        <div class="col-9">{{selectedMovie?.description}}</div>
+      </div>
+      <div class="row">
+        <div class="col-3">Cast</div>
+        <div class="col-9">{{selectedMovie?.cast}}</div>
+      </div>
+      <div class="row">
+        <div class="col-3">Location</div>
+        <div class="col-9">{{selectedMovie?.location}}</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+    </div>
+  </ng-template>
+</div>

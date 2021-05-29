@@ -1,0 +1,43 @@
+.home-menu {
+    margin: 10px;
+}
+
+.home-menu-item {
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+    border-radius: 5%;
+    text-align: center;
+    line-height: 200px;
+    overflow-wrap: normal;
+    color: white;
+}
+
+.one {    
+    /* background-color: #0000FF; */
+    color: yellow;
+    background: url("../../../assets/searchMovie.PNG");
+    background-size: 200px 200px;
+}
+
+.two {    
+    /* background-color: #000080	; */
+    color: yellow;
+    background: url("../../../assets/viewMovieList.jpg");
+    background-size: 200px 200px;
+}
+
+.three {    
+    /* background-color: #FF00FF	; */
+    color: transparent;
+    background: url("../../../assets/addMovies.jpg");
+    background-size: 200px 200px;
+}
+
+.four {    
+    /* background-color: #800080	; */
+    color: red;
+    font-weight: bolder;
+    background: url("../../../assets/languages.jpg");
+    background-size: 100px 100px;
+}
